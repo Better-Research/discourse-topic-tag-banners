@@ -1,0 +1,50 @@
+.tag-title-header {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  background: var(--primary-very-low);
+  min-height: 10em; // prevents hop when tag name loads
+
+  .tag-title-contents {
+    max-width: 700px;
+    padding: 3.5em 3em 3em;
+
+    @media screen and (max-width: 450px) {
+      padding: 1.5em;
+    }
+    svg {
+      height: 1.5em;
+      width: 1.1em;
+      margin-right: 0.25em;
+    }
+    h1 {
+      display: inline;
+      margin: 0;
+    }
+    p:empty {
+      display: none;
+    }
+  }
+  .tag-title-description {
+    a,
+    a:visited {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+}
+.tag-banner {
+  #main-outlet {
+    padding-top: 1.5em;
+  }
+}
+
+.mobile-view {
+  .tag-title-header {
+    min-height: 3em; // prevents hop when tag name loads
+    p {
+      margin-top: 0;
+    }
+  }
+}
