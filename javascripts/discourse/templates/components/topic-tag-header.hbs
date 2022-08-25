@@ -9,7 +9,7 @@
           {{#if (theme-setting "show_tag_description")}}
             <p class="tag-description">{{tag.description}}</p>
           {{/if}}
-          <p><strong>PDF:</strong> {{tag.url}}</p>
+          <p><strong>PDF:</strong> <a href={{tag.url}}>{{tag.url}}</a></p>
         </div>
       {{/each}}
     </div>
