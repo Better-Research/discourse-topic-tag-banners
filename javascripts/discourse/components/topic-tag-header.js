@@ -45,7 +45,8 @@ export default Component.extend({
     this.topic.tags.forEach((tag) => {
       tags.push({
         name: tag,
-        description: this.topic.tags_descriptions[tag]
+        description: this.topic.tags_descriptions[tag],
+        url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
       })
     })
 
