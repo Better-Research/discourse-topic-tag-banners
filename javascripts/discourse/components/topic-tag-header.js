@@ -11,7 +11,7 @@ export default Component.extend({
     this.setTopic();
   },
 
-  fullNameChanged: observer('router.currentRoute', function() {
+  fullNameChanged: observer("router.currentRoute", function () {
     this.setTopic();
   }),
 
@@ -31,7 +31,13 @@ export default Component.extend({
     const hideMobile =
       !settings.show_on_mobile && this.site.mobileView ? true : false;
 
-    return this.topic && this.topic.tags.length > 0 && !hideMobile && route.parent.name == "topic";
+    return (
+      this.topic &&
+      this.topic.tags &&
+      this.topic.tags.length > 0 &&
+      !hideMobile &&
+      route.parent.name == "topic"
+    );
   },
 
   @computed("topic")
@@ -51,5 +57,5 @@ export default Component.extend({
     })
 
     return tags;
-  }
+  },
 });
