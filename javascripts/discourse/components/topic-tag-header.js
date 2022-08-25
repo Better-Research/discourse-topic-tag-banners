@@ -30,7 +30,7 @@ export default Component.extend({
     const route = this.router.currentRoute;
     const hideMobile =
       !settings.show_on_mobile && this.site.mobileView ? true : false;
-    console.log(route.parent.name);
+
     return (
       this.topic &&
       this.topic.tags &&
