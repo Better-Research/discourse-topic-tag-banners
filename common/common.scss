@@ -4,7 +4,7 @@
   width: 100%;
   justify-content: center;
   background: var(--primary-very-low);
-  min-height: 10em; // prevents hop when tag name loads
+  min-height: 5em; // prevents hop when tag name loads
 
   .tag-title-contents {
     max-width: 700px;
@@ -42,7 +42,7 @@
 
 .mobile-view {
   .tag-title-header {
-    min-height: 3em; // prevents hop when tag name loads
+    min-height: 1em; // prevents hop when tag name loads
     p {
       margin-top: 0;
     }
