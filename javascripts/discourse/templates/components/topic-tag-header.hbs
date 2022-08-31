@@ -4,7 +4,7 @@
       {{#each tags as |tag|}}
         <div class="tag">
           <h1 class="tag-name">
-            <span>{{tag.name}}</span>
+            <span><a href="/tag/{{tag.name}}">{{tag.name}}</a></span>
           </h1>
           {{#if (theme-setting "show_tag_description")}}
             <p class="tag-description">{{tag.description}}</p>
