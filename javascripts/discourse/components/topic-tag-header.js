@@ -41,8 +41,6 @@ export default Component.extend({
   }),
   fetchPapers(result) {
       if (result.tags.length > 0) {
-        console.log(result.tags);
-        var cnt = 0;
         var arr = [];
         result.tags.forEach((elm) => {
           ajax("/paper_store/" + elm + ".json").then((data) => {
@@ -57,8 +55,7 @@ export default Component.extend({
                   description: data_json["title"],
                   url: "https://eprint.iacr.org/" + elm.replace("-", "/") + ".pdf"
                 })
-                cnt +=1;
-                if(cnt == result.tags.length) {
+                if(arr.length == result.tags.length) {
                   this.papers = arr;
                   this.data.resolve(this.papers);
                 }
@@ -108,7 +105,6 @@ export default Component.extend({
     //   return new AsyncData();
     // }
     if(this.data.state == 'loading') {
-      console.log("here");
       return this.fetchPapers(this.topic);
     }
     else {
