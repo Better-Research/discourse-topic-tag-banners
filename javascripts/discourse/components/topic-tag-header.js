@@ -49,7 +49,6 @@ export default Component.extend({
     }
 
     this.topic.tags.forEach((tag) => {
-      if (this.state.loaded) {
         ajax("/paper_store/" + tag + ".json").then(response =>  {
           return response
         }).then(data => {
