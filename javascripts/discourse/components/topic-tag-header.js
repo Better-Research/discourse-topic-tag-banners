@@ -17,6 +17,9 @@ class AsyncData {
     return this.state === 'loaded';
   }
 
+  reset() {
+    this.state = 'loading';
+  }
   resolve(value) {
     this.state = 'loaded';
     this.value = value;
@@ -37,7 +40,7 @@ export default Component.extend({
 
   fullNameChanged: observer("router.currentRoute", function () {
     this.setTopic();
-    this.data.state = 'loading';
+    this.data.reset();
   }),
   fetchPapers(result) {
       if (result.tags.length > 0) {
@@ -98,69 +101,12 @@ export default Component.extend({
   @computed("topic")
   get tags() {
     
-    // const tags = [];
-    // var cnt = 0;
-
-    // if (!this.topic || this.topic.tags.length <= 0) {
-    //   return new AsyncData();
-    // }
-    if(this.data.state == 'loading') {
+    if(this.data.isLoading) {
       return this.fetchPapers(this.topic);
     }
     else {
       return this.data;
     }
-    
-    // this.topic.tags.forEach((tag) =>  {
-      
-    //   var authors = ""
-    //   ajax("/paper_store/" + tag + ".json").then(response =>  {
-    //     return response
-    //   }).then(data => {
-    //       if(!data.hasOwnProperty("error")) {
-    //         var data_json = JSON.parse(data["result"]);
-    //         if (data_json != null) {
-    //           authors = JSON.parse(data_json["authors"]).join(", ");
-              
-    //           tags.push({
-    //             name: tag,
-    //             authors: authors,
-    //             description: this.topic.tags_descriptions[tag],
-    //             url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
-    //           })
-    //           cnt+=1;
-    //         }
-    //       }
-    //     });
-    // });
-    
-    //return tags;
-    // return tags;
-    // if (!this.topic || this.topic.tags.length <= 0) {
-    //   console.log("hello");
-    //   return [];
-    // }
-    
-    // return Promise.all(this.topic.tags.map((tag) => {
-    //   console.log(tag);
-    //   var authors = ""
-    //   return ajax("/paper_store/" + tag + ".json").then(response =>  {
-    //     return response
-    //   }).then(data => {
-    //       if(!data.hasOwnProperty("error")) {
-    //         var data_json = JSON.parse(data["result"]);
-    //         if (data_json != null) {
-    //           authors = JSON.parse(data_json["authors"]).join(", ");
-    //           return {
-    //             name: tag,
-    //             authors: authors,
-    //             description: this.topic.tags_descriptions[tag],
-    //             url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
-    //           }
-    //         }
-    //       }
-    //     });
-    // }))
     
   },
 });
