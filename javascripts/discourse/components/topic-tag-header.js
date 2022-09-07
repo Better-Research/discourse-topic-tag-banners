@@ -49,24 +49,11 @@ export default Component.extend({
     }
 
     this.topic.tags.forEach((tag) => {
-        ajax("/paper_store/" + tag + ".json").then(response =>  {
-          return response
-        }).then(data => {
-          if(!data.hasOwnProperty("error")) {
-            var data_json = JSON.parse(data["result"]);
-            if (data_json != null) {
-              var authors = JSON.parse(data_json["authors"]).join(", ") 
-              //this.state.info = h("span", [h('p', authors), h('button.abstract_collapsible', "Show Abstract"),h('div.abstract_content', data_json["abstract"])])
-              tags.push({
-                name: tag,
-                description: this.topic.tags_descriptions[tag],
-                authors: authors,
-                url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
-              })
-            }
-          }
-        });
-      
+      tags.push({
+        name: tag,
+        description: this.topic.tags_descriptions[tag],
+        url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
+      })
     })
 
     return tags;
