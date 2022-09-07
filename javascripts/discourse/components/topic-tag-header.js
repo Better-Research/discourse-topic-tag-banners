@@ -2,6 +2,8 @@ import Component from "@ember/component";
 import { inject as service } from "@ember/service";
 import { computed, observer } from "@ember/object";
 import Topic from "discourse/models/topic";
+import { ajax } from 'discourse/lib/ajax';
+
 
 export default Component.extend({
   router: service(),
