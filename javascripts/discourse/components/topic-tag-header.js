@@ -49,18 +49,9 @@ export default Component.extend({
     }
 
     this.topic.tags.forEach((tag) => {
-      var desc = katex.renderToString(this.topic.tags_descriptions[tag], {
-        delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
-        ],
-        throwOnError: false
-      });
       tags.push({
         name: tag,
-        description: desc,
+        description: this.topic.tags_descriptions[tag],
         url: "https://eprint.iacr.org/" + tag.replace("-", "/") + ".pdf"
       })
     })
