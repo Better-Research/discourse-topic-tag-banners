@@ -34,7 +34,6 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.setTopic();
-    this.papers = [];
     this.data = new AsyncData();
   },
 
@@ -59,8 +58,7 @@ export default Component.extend({
                   url: "https://eprint.iacr.org/" + elm.replace("-", "/") + ".pdf"
                 })
                 if(arr.length == result.tags.length) {
-                  this.papers = arr;
-                  this.data.resolve(this.papers);
+                  this.data.resolve(arr);
                 }
 
               }
