@@ -42,6 +42,10 @@ export default Component.extend({
     this.data.reset();
   }),
   fetchPapers(result) {
+      if(result.tags.includes("isogeny-club")) {
+        result.tags.splice(result.tags.indexOf("isogeny-club"), 1);
+      }
+      
       if (result.tags.length > 0) {
         var arr = [];
         result.tags.forEach((elm) => {
