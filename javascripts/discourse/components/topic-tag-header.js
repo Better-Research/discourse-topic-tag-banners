@@ -50,13 +50,14 @@ export default Component.extend({
               var data_json = JSON.parse(data["result"]);
               if (data_json != null) {
                 var authors = JSON.parse(data_json["authors"]).join(", ");
-                
-                arr.push({
-                  name: elm,
-                  authors: authors,
-                  description: data_json["title"],
-                  url: "https://eprint.iacr.org/" + elm.replace("-", "/") + ".pdf"
-                })
+                if (elm !== "isogeny-club") {
+                  arr.push({
+                    name: elm,
+                    authors: authors,
+                    description: data_json["title"],
+                    url: "https://eprint.iacr.org/" + elm.replace("-", "/") + ".pdf"
+                  })
+                }
                 if(arr.length == result.tags.length) {
                   this.data.resolve(arr);
                 }
